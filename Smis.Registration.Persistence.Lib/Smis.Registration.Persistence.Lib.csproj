@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Smis.Registration.Persistence.Lib</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Mauro Fanton</Authors>
+    <Product>Smis Registration Persistence Library</Product>
+    <PackageTags>Smis;Smis.Refistration.Persistence</PackageTags>
+    <Description>
+      This client library provide persistence classes for the Smis Registration services for Mongodb 
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.19.2" />
+    <PackageReference Include="Mongo.Migration" Version="3.1.4" />
+  </ItemGroup>
+</Project>
