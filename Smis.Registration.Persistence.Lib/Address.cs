@@ -1,7 +1,7 @@
 ﻿using System;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Persistence
+namespace Smis.Registration.Persistence.Lib
 {
     [BsonDiscriminator("address")]
     public class Address

@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
 
+
+CONFIG=$1
 PUBLISHED_PACKAGE__DIR="./published"
 PACKAGES_DIR="packages"
 
@@ -26,7 +28,7 @@ then
   exit 1
 fi
 
-if [ "$1" != "Release" ] && [ "$1" != "Debug" ]
+if [ "$CONFIG" != "Release" ] && [ "$CONFIG" != "Debug" ]
 then
   usage
   exit 1
@@ -34,20 +36,19 @@ fi
 
 
 
-if [ -d $PUBLISHED_PACKAGE__DIR ]
+if [ -d "$PUBLISHED_PACKAGE__DIR" ]
 then
   rm -rvf $PUBLISHED_PACKAGE__DIR
 fi
 
 echo "Creating 'published' directory..." 
-mkdir $PUBLISHED_PACKAGE__DIR
+mkdir -p $PUBLISHED_PACKAGE__DIR
 
-description "Building project..."
+description "Clean project..."
 dotnet clean -c $1
-dotnet build -c $1
 
 description "Creating nuget packages..."
-dotnet pack -o $PUBLISHED_PACKAGE__DIR
+dotnet pack -o $PUBLISHED_PACKAGE__DIR -c $CONFIG
 
 # todo: add readme file to nuget package
 
@@ -61,12 +62,20 @@ fi
 
 if [ ! -d ../$PACKAGES_DIR ]
 then
-  mkdir ../$PACKAGES_DIR
+  mkdir -p ../$PACKAGES_DIR
 fi
 
 packagePath=$(ls $PUBLISHED_PACKAGE__DIR/*.nupkg)
+
+
+
 IFS='/' read -ra arr <<< "$packagePath"
 packageName="${arr[${#arr[@]}-1]}"
+
+if [ -f "../$PACKAGES_DIR/$packageName" ]
+then
+  rm -vf "../$PACKAGES_DIR/$packageName"
+fi
 
 description "copy $PUBLISHED_PACKAGE__DIR/$packageName to ./$PACKAGES_DIR/$packageName"
 

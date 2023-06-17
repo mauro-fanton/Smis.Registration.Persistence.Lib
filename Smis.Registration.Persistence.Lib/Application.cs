@@ -2,9 +2,9 @@
 using Mongo.Migration.Documents;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
-using Persistence;
 
-namespace SmisRegistrationPersistence
+
+namespace Smis.Registration.Persistence.Lib
 {
     [BsonDiscriminator(Application.TableName)]
     public class Application: IDocument
