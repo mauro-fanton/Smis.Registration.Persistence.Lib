@@ -406,4 +406,4 @@ ASALocalRun/
 .localhistory/
 
 # directory that contain generate nuget packages
-published/*
+published
