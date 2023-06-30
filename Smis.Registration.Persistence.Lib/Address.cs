@@ -7,9 +7,11 @@ namespace Smis.Registration.Persistence.Lib
     public class Address
 	{
         [BsonElement("addressLine1")]
+        [BsonRequired]
         public string AddressLine1 { get; set; }
 
         [BsonElement("addressLine2")]
+        [BsonRequired]
         public string AddressLine2 { get; set; }
 
         [BsonElement("addressLine3")]
@@ -19,23 +21,8 @@ namespace Smis.Registration.Persistence.Lib
         public string? AddressLine4 { get; set; }
 
         [BsonElement("postCode")]
+        [BsonRequired]
         public string PostCode { get; set; }
-
-		public Address(
-            string addressLine1,
-            string addressLine2,
-            string addressLine3,
-            string addressLine4,
-            string postCode)
-		{
-
-            AddressLine1 = addressLine1 ?? throw new ArgumentException("Address line 1 is missinng");
-            AddressLine2 = addressLine2 ?? throw new ArgumentException("Address line 1 is missinng");
-            AddressLine3 = addressLine3;
-            AddressLine4 = addressLine4;
-            PostCode = postCode ?? throw new ArgumentException("Postcode is missinng");
-        }
-
 	}
 }
 

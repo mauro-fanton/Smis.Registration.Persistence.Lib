@@ -1,43 +1,52 @@
-﻿using System;
-using Mongo.Migration.Documents;
+﻿using Mongo.Migration.Documents;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
 
 
 namespace Smis.Registration.Persistence.Lib
 {
     [BsonDiscriminator(Application.TableName)]
-    public class Application: IDocument
+    public class Application
 	{
         [BsonIgnore]
         public const string TableName = "application";
 
+        public Guid Id { get; set; }
+
         [BsonElement("firstName")]
+        [BsonRequired]
         public string FirstName { get; set; }
 
         [BsonElement("surname")]
+        [BsonRequired]
         public string Surname { get; set; }
 
         [BsonElement("dob")]
         [BsonDateTimeOptions]
+        [BsonRequired]
         public DateTime DateOfBirthday { get; set ; }
 
-        [BsonElement("applicationNumber")]     
+        [BsonElement("applicationNumber")]
+        [BsonRequired]
         public string ApplicationNumber { get; set; }
 
         [BsonElement("title")]
+        [BsonRequired]
         public string Title { get; set; }
 
         [BsonElement("contactAddress")]
+        [BsonRequired]
         public Address ContactAddress { get; set; }
 
         [BsonElement("primaryGuardianName")]
+        [BsonRequired]
         public string PrimaryGuardianName { get; set; }
 
         [BsonElement("primaryGuardianSurname")]
+        [BsonRequired]
         public string PrimaryGuardianSurname { get; set; }
 
         [BsonElement("primaryGuardianTelephone")]
+        [BsonRequired]
         public string PrimaryGuardianTelephone { get; set; }
 
         [BsonElement("secondaryGuardianName")]
@@ -50,24 +59,7 @@ namespace Smis.Registration.Persistence.Lib
 
         [BsonElement("secondaryGuardianTelephone")]
         [BsonIgnoreIfNull]
-        public string? SecondaryGuardianTelephone { get; set; }
-
-        [BsonIgnoreIfNull]
-        public DocumentVersion Version { get; set; }
-
-        public Application(string firstName, string surname, DateTime dateOfBirthday, string applicationNumber, string title, Address contactAddress, string primaryGuardianName, string primaryGuardianSurname, string primaryGuardianTelephone)
-        {
-            //ID = id ?? throw new ArgumentNullException("Id is null.");
-            FirstName = firstName ?? throw new ArgumentNullException("firstName is null.");
-            Surname = surname ?? throw new ArgumentNullException("surname is null.");
-            DateOfBirthday = dateOfBirthday;
-            ApplicationNumber = applicationNumber ?? throw new ArgumentNullException("applicationNumber is null.");
-            Title = title ?? throw new ArgumentNullException("title is null.");
-            ContactAddress = contactAddress ?? throw new ArgumentNullException("contactAddress is null.");
-            PrimaryGuardianName = primaryGuardianName ?? throw new ArgumentNullException("primaryGuardianName is null.");
-            PrimaryGuardianSurname = primaryGuardianSurname ?? throw new ArgumentNullException("primaryGuardianSurname is null.");
-            PrimaryGuardianTelephone = primaryGuardianTelephone ?? throw new ArgumentNullException("primaryGuardianTelephone is null.");
-        }
+        public string? SecondaryGuardianTelephone { get; set; }       
     }
 }
 
