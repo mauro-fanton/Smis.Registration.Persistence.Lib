@@ -55,7 +55,7 @@ jobs:
       uses: actions/download-artifact@v1.0.0
       with:
         name: nugetPackage
-        run: echo "==> $(pwd)"
+        run: echo "==> $pwd"
     - name: Prep packages
       run: dotnet nuget add source --username mauro-fanton --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/mauro-fanton/index.json"
     - name: Push package to GitHub packages 
