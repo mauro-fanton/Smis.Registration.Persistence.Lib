@@ -1,13 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Mongo.Migration.Documents;
 using MongoDB.Bson.Serialization.Attributes;
 
 
 namespace Smis.Registration.Persistence.Lib
 {
+    /// <summary>
+    /// Rapresentation class for the Application
+    /// </summary>
     [BsonDiscriminator(Application.TableName)]
     public class Application
 	{
+
+        public Application()
+        {
+            LastUpdated = DateTime.UtcNow;
+        }
+
         [BsonIgnore]
         public const string TableName = "application";
 
@@ -108,7 +116,10 @@ namespace Smis.Registration.Persistence.Lib
         /// </summary>
         [BsonElement("secondaryGuardianTelephone")]
         [BsonIgnoreIfNull]
-        public string? SecondaryGuardianTelephone { get; set; }       
+        public string? SecondaryGuardianTelephone { get; set; }
+
+        [BsonElement("lastUpdated")]
+        public DateTime LastUpdated { get; set; }
     }
 }
 

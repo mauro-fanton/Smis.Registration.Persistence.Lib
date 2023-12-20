@@ -1,9 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Smis.Registration.Persistence.Lib
 {
+    /// <summary>
+    /// Rapresentation class for address
+    /// </summary>
     [BsonDiscriminator("address")]
     public class Address
 	{
