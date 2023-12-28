@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace Smis.Registration.Persistence.Lib
 {
@@ -23,7 +23,7 @@ namespace Smis.Registration.Persistence.Lib
         /// <summary>
         /// The unique record id
         /// </summary>
-        [BsonId]
+        [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
