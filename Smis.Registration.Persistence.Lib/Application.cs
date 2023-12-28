@@ -22,7 +22,8 @@ namespace Smis.Registration.Persistence.Lib
         /// <summary>
         /// The unique record id
         /// </summary>
-        public Guid Id { get; set; }
+        [BsonIgnoreIfNull]
+        public Guid? Id { get; set; }
 
         /// <summary>
         /// First name
