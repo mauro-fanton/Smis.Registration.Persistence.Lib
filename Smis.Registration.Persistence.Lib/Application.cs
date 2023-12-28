@@ -24,7 +24,7 @@ namespace Smis.Registration.Persistence.Lib
         /// The unique record id
         /// </summary>
         [BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// First name
