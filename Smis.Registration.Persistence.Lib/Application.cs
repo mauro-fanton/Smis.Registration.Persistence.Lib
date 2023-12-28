@@ -23,6 +23,7 @@ namespace Smis.Registration.Persistence.Lib
         /// <summary>
         /// The unique record id
         /// </summary>
+        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
