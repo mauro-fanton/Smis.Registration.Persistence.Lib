@@ -24,6 +24,7 @@ namespace Smis.Registration.Persistence.Lib
         /// The unique record id
         /// </summary>
         [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
+        [BsonIgnoreIfDefault]
         public string Id { get; set; }
 
         /// <summary>
