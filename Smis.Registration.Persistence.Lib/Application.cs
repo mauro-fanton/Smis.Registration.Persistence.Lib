@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 
@@ -23,7 +24,7 @@ namespace Smis.Registration.Persistence.Lib
         /// The unique record id
         /// </summary>
         [BsonIgnoreIfNull]
-        public Guid? Id { get; set; }
+        public ObjectId? Id { get; set; }
 
         /// <summary>
         /// First name
